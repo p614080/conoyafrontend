@@ -1,8 +1,4 @@
-import { lazy } from "react";
 import { Link } from "react-router-dom";
-
-const SingUp = lazy(() => import("../../pages/member/SignUpPage.js"))
-
 
 const LoginComponent = () => {
  return(

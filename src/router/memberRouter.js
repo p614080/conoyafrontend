@@ -14,7 +14,7 @@ const Bookmark = lazy(() => import("../pages/member/BookmarkPage.js"))
 
 // const KakaoRedirect = lazy(() => import("../pages/member/KakaoRedirectPage"))
 
-const MemberModify = lazy(() => import("../pages/member/ModifyPage.js"))
+// const MemberModify = lazy(() => import("../pages/member/ModifyPage.js"))
 
 const memberRouter = () => {
 
