@@ -24,9 +24,9 @@ const BasicHeader = () => {
                     <li className="hover:underline">
                         <Link to={'/'}>Home</Link>
                     </li>
-                    <li><Link to={'/bookmark'}>즐겨찾기</Link></li>
-                    <li><Link to={'/login'}>Login</Link></li>
-                    <li><Link to={'/mypage'}>Mypage</Link></li>
+                    <li><Link to={'/member/bookmark'}>즐겨찾기</Link></li>
+                    <li><Link to={'/member/login'}>Login</Link></li>
+                    <li><Link to={'/member/mypage'}>Mypage</Link></li>
                 </ul>
             </nav>
         </header>

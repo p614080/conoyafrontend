@@ -1,26 +1,50 @@
-import BookmarkComponent from "../bookmark/BookmarkComponent.js";
+import { lazy } from "react";
+import { Link } from "react-router-dom";
+
+const SingUp = lazy(() => import("../../pages/member/SignUpPage.js"))
+
 
 const LoginComponent = () => {
  return(
-    <div>
-        <div className="flex justify-center">
-            <label for="inputId">아이디</label>
-            <input  className="ml-2" type="text" id="inputId"></input>
-            
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">로그인</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" action="#" method="POST">
+      <div>
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">이메일</label>
+        <div class="mt-2">
+          <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
         </div>
-        <div className="flex justify-center py-3 mr-5">
-        <label for="inputPassword"  className="ml-3">비밀번호</label>
-        <input type="password" className="ml-0"></input>
+      </div>
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">비밀번호</label>
+          <div class="text-sm">
+            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">비밀번호를 잊어버리셨나요?</a>
+          </div>
         </div>
-        <div className="flex justify-center mr-3">
-            <button type="button" className="mr-5">
-                확인
-            </button>
-            <button type="button">
-                회원가입
-            </button>
+        <div class="mt-2">
+          <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
         </div>
-    </div>
- );
+      </div>
+
+      <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">로그인</button>
+      </div>
+    </form>
+         <div>
+         <Link to={'/member/signup'}>
+        <button type="button" class="flex mt-4 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          회원가입
+        </button>
+        </Link>
+      </div>
+    
+  </div>
+</div>
+ )
 }
 export default LoginComponent;

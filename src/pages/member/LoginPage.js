@@ -1,4 +1,4 @@
-import LoginComponent from "../../component/member/loginComponent";
+import LoginComponent from "../../component/member/LoginComponent";
 import BasicLayout from "../../layout/BasicLayout";
 
 const LoginPage = () => {
