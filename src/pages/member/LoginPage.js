@@ -1,8 +1,12 @@
+import LoginComponent from "../../component/member/loginComponent";
+import BasicLayout from "../../layout/BasicLayout";
+
 const LoginPage = () => {
     return(
-        <div>
-            <p1>Login Page</p1>
-        </div>
+        <BasicLayout>
+            <h1> LoginPage</h1>
+           <LoginComponent/>
+        </BasicLayout>
     );
 }
 export default LoginPage;
