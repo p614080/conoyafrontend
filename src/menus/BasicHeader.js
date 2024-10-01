@@ -9,7 +9,7 @@ const BasicHeader = () => {
         <div className="ml-10">
           <h1 className="text-2xl font-bold ">코노야</h1>
         </div>
-        <div className="flex justify-center ">
+        {/* <div className="flex justify-center ">
           <input
             type="text"
             placeholder="검색어를 입력하세요"
@@ -23,7 +23,7 @@ const BasicHeader = () => {
               />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
       <nav>
         <ul className="flex space-x-8 ml-2 list-none pt-5">
