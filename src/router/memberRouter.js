@@ -8,7 +8,7 @@ const SingUp = lazy(() => import("../pages/member/SignUpPage.js"))
 
 const MyPage = lazy(() => import("../pages/member/MyPage.js"))
 
-FavoritesPage.js"))const Favorites = lazy(() => import("../pages/member/
+const Favorites = lazy(() => import("../pages/member/FavoritesPage.js"))
 
 // const LogoutPage = lazy(() => import("../pages/member/LogoutPage"))
 
