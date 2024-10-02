@@ -1,11 +1,11 @@
-import BookmarkListComponent from "../component/bookmark/BookmarkListComponent";
+// import BookmarkListComponent from "../component/bookmark/BookmarkListComponent";
 import BasicLayout from "../layout/BasicLayout";
+import MainComponent from "../component/main/MainComponent"
 
 const MainPage = () => {
     return(
         <BasicLayout>          
-            <div className="text 3xl">MainPage</div>
-            <BookmarkListComponent/>
+            <MainComponent/>
         </BasicLayout>
     );
 }
