@@ -1,45 +1,83 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
 const SignupComponent = () => {
-  const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [userType, setUserType] = useState('individual'); // 기본값은 일반회원
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // 회원 가입 처리 로직 추가
-    console.log({ nickname, email, password });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // 여기에 가입 처리 로직 추가
+        console.log({ email, password, confirmPassword, userType });
+    };
 
-  return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="mt-5 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          회원가입
-        </h2>
-        <div className="w-full mt-5 h-full">
-          {/* <Link to={"/user/signup"}>
-            <button
-              id="btnLoginUser"
-              className="w-1/2 justify-center py-2 text-white font-bold bg-indigo-600 rounded hover:bg-indigo-500"
-            >
-              일반회원
-              <br />
-              가입
-            </button>
-          </Link>
-          <Link to={"/owner/signup"}>
-            <button
-              id="btnLoginUser"
-              className="w-1/2 ml-auto justify-center py-2 text-white font-bold bg-cyan-600 rounded hover:bg-cyan-500"
-            >
-              기업회원 <br /> 가입
-            </button>
-          </Link> */}
-        </div>
-      </div>
-    </div>
-  );
+    return (
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow">
+            <h2 className="text-2xl mb-4">회원 가입</h2>
+
+            <div className="mb-4">
+                <label className="block text-gray-700">회원 유형</label>
+                <select 
+                    value={userType} 
+                    onChange={(e) => setUserType(e.target.value)} 
+                    className="w-full p-2 border rounded"
+                >
+                    <option value="individual">일반회원</option>
+                    <option value="business">기업회원</option>
+                </select>
+            </div>
+
+            <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700">이메일</label>
+                <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full p-2 border rounded"
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="password" className="block text-gray-700">비밀번호</label>
+                <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="w-full p-2 border rounded"
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="confirmPassword" className="block text-gray-700">비밀번호 확인</label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    className="w-full p-2 border rounded"
+                />
+            </div>
+
+            {/* 기업회원일 경우 추가 정보 입력 */}
+            {userType === 'business' && (
+                <div className="mb-4">
+                    <label htmlFor="companyName" className="block text-gray-700">회사명</label>
+                    <input
+                        type="text"
+                        id="companyName"
+                        required
+                        className="w-full p-2 border rounded"
+                    />
+                </div>
+            )}
+
+            <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">가입하기</button>
+        </form>
+    );
 };
 
 export default SignupComponent;
