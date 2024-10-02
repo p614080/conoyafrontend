@@ -2,21 +2,21 @@ import { Suspense, lazy } from "react";
 
 const Loading = <div>Loading....</div>
 
-const Login =  lazy(() => import("../pages/member/LoginPage"))
+const Login =  lazy(() => import("../pages/user/LoginPage"))
 
-const SingUp = lazy(() => import("../pages/member/SignUpPage.js"))
+const SingUp = lazy(() => import("../pages/user/SignUpPage.js"))
 
-const MyPage = lazy(() => import("../pages/member/MyPage.js"))
+const MyPage = lazy(() => import("../pages/user/MyPage.js"))
 
-const Favorites = lazy(() => import("../pages/member/FavoritesPage.js"))
+const Favorites = lazy(() => import("../pages/user/FavoritesPage.js"))
 
-// const LogoutPage = lazy(() => import("../pages/member/LogoutPage"))
+// const LogoutPage = lazy(() => import("../pages/user/LogoutPage"))
 
-// const KakaoRedirect = lazy(() => import("../pages/member/KakaoRedirectPage"))
+// const KakaoRedirect = lazy(() => import("../pages/user/KakaoRedirectPage"))
 
-// const MemberModify = lazy(() => import("../pages/member/ModifyPage.js"))
+// const MemberModify = lazy(() => import("../pages/user/ModifyPage.js"))
 
-const memberRouter = () => {
+const userRouter = () => {
 
   return [
     {
@@ -52,4 +52,4 @@ const memberRouter = () => {
 
 }
 
-export default memberRouter
+export default userRouter;

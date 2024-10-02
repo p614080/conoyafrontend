@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import memberRouter from "./memberRouter";
+import userRouter from "./userRouter";
 import singroomRouter from "./singroomRouter";
 
 const {createBrowserRouter} = require("react-router-dom");
@@ -11,7 +11,7 @@ const Main = lazy(() => import("../pages/MainPage"))
 //공지사항
 const Notice = lazy(() => import("../pages/NoticePage"))
 //가입페이지(일반회원/기업회원 선택)
-const SignUp = lazy(() => import("../pages/member/SignUpPage"))
+const SignUp = lazy(() => import("../pages/user/SignUpPage"))
 
 
 
@@ -29,8 +29,8 @@ const root = createBrowserRouter([
         element: <Suspense fallback={Loading}><SignUp/></Suspense>
     },
     {
-        path: "member",
-        children: memberRouter()
+        path: "user",
+        children: userRouter()
     },
     {
         path: "singroom",
