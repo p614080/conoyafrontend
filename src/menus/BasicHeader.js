@@ -38,10 +38,10 @@ const BasicHeader = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/notice"}>공지사항</Link>
+              <Link to={"/singroom/list"}>노래방찾기</Link>
             </li>
             <li>
-              <Link to={"/member/bookmark"}>즐겨찾기</Link>
+              <Link to={"/member/bookmark"}>즐겨찾는 노래방</Link>
             </li>
             <li>
               <Link to={"/member/login"}>Login</Link>

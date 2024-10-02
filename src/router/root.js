@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import memberRouter from "./memberRouter";
+import singroomRouter from "./singroomRouter";
 
 const {createBrowserRouter} = require("react-router-dom");
 
@@ -24,6 +25,10 @@ const root = createBrowserRouter([
     {
         path: "member",
         children: memberRouter()
+    },
+    {
+        path: "singroom",
+        children: singroomRouter()
     }
 ])
 
