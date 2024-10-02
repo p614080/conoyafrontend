@@ -41,13 +41,13 @@ const BasicHeader = () => {
               <Link to={"/singroom/list"}>노래방찾기</Link>
             </li>
             <li>
-              <Link to={"/member/favorites"}>즐겨찾는 노래방</Link>
+              <Link to={"/user/favorites"}>즐겨찾는 노래방</Link>
             </li>
             <li>
-              <Link to={"/member/login"}>Login</Link>
+              <Link to={"/user/login"}>Login</Link>
             </li>
             <li>
-              <Link to={"/member/mypage"}>Mypage</Link>
+              <Link to={"/user/mypage"}>Mypage</Link>
             </li>
           </ul>
         </nav>
