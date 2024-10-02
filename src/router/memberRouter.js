@@ -8,7 +8,7 @@ const SingUp = lazy(() => import("../pages/member/SignUpPage.js"))
 
 const MyPage = lazy(() => import("../pages/member/MyPage.js"))
 
-const Bookmark = lazy(() => import("../pages/member/BookmarkPage.js"))
+FavoritesPage.js"))const Favorites = lazy(() => import("../pages/member/
 
 // const LogoutPage = lazy(() => import("../pages/member/LogoutPage"))
 
@@ -43,8 +43,8 @@ const memberRouter = () => {
     //   path:"modify",
     //   element: <Suspense fallback={Loading}><MemberModify/></Suspense>,
     // },
-    {   path:"bookmark",
-        element: <Suspense fallback={Loading}><Bookmark/></Suspense>
+    {   path:"favorites",
+        element: <Suspense fallback={Loading}><Favorites/></Suspense>
 
     }
 

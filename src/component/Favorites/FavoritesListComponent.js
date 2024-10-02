@@ -11,7 +11,7 @@
 //     current: 0
 // }
 
-const BookmarkListComponent = () => {
+const FavoritesListComponent = () => {
     return(
         <div>
             즐겨찾기 리스트
@@ -19,4 +19,4 @@ const BookmarkListComponent = () => {
     );
 }
 
-export default BookmarkListComponent;
+export default FavoritesListComponent;

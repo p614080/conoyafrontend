@@ -1,11 +1,11 @@
-import BookmarkComponent from "../../component/bookmark/BookmarkComponent"
+import FavoritesComponent from "../../component/Favorites/FavoritesComponent"
 import BasicLayout from "../../layout/BasicLayout";
 
-const BookmarkPage =()=>{
+const FavoritesPage =()=>{
     return(
         <BasicLayout>
             <div>
-            <BookmarkComponent/>
+            <FavoritesComponent/>
             </div>
 
         </BasicLayout>
@@ -14,4 +14,4 @@ const BookmarkPage =()=>{
        
     );
 }
-export default BookmarkPage;
+export default FavoritesPage;
