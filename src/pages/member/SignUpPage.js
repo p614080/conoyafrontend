@@ -1,4 +1,4 @@
-import SignupComponent from "../../component/member/SignUpComponent.js2";
+import SignupComponent from "../../component/member/SignUpComponent";
 import BasicLayout from "../../layout/BasicLayout";
 
 const SignUpPage = () => {
