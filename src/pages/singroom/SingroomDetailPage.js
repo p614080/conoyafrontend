@@ -1,9 +1,9 @@
 import BasicLayout from "../../layout/BasicLayout";
 
-const SingroomDetailPage = () =>{
+const SingroomDetailPage = ({id}) =>{
     return(
         <BasicLayout>
-            노래방 상세페이지
+            노래방 상세페이지 {id}
         </BasicLayout>
     );
 }

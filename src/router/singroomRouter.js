@@ -19,7 +19,7 @@ const SingroomRouter = () => {
       element: <Suspense fallback={Loading}><List/></Suspense>
     },
     {
-      path:"detail",
+      path:"detail/{sno}",
       element: <Suspense fallback={Loading}><Detail/></Suspense>
     },
   ]
