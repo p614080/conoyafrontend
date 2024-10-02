@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const SingroomDetailComponent = () => {
+const SingroomDetailComponent = ({sno}) => {
   const { id } = useParams(); // URL에서 ID 추출
   const [singroom, setSingroom] = useState(null); // 데이터를 저장할 상태
   const [loading, setLoading] = useState(true); // 로딩 상태
@@ -27,7 +27,7 @@ const SingroomDetailComponent = () => {
   }
 
   if (!singroom) {
-    return <div>상품을 찾을 수 없습니다.</div>; // 데이터가 없을 경우
+    return <div>노래방을 찾을 수 없습니다.</div>; // 데이터가 없을 경우
   }
 
   return (
