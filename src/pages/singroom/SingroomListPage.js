@@ -2,11 +2,13 @@ import SingroomListComponent from "../../component/singroom/SingroomListComponen
 import BasicLayout from "../../layout/BasicLayout";
 
 const SingroomListPage = () => {
-    return(
-        <BasicLayout>
-            노래방리스트페이지
-            <SingroomListComponent/>
-        </BasicLayout>
-        )
-}
+  return (
+    <BasicLayout>
+      <div>
+        <h1 className="text-2xl font-extrabold ">노래방 리스트</h1>
+      </div>
+      <SingroomListComponent />
+    </BasicLayout>
+  );
+};
 export default SingroomListPage;

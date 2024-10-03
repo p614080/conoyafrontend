@@ -25,19 +25,24 @@ const SingroomListComponent = () => {
 
   return (
     <div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full mt-3">
         <select className="border-2 rounded-md" onChange={(e) => setSortOption(e.target.value)}>
           <option value="default">정렬 기준</option>
           <option value="price">가격순</option>
         </select>
         <input 
           type="text" 
-          className="bg-slate-300 w-56 h-8 border-b-2 rounded-md" 
+          className="ml-1 bg-slate-300 w-56 h-8 border-b-2 rounded-md" 
           placeholder="검색어를 입력하세요"
           onChange={(e) => setSearchTerm(e.target.value)} 
         />
+        <button className='bg-cyan-500 pl-2 pr-2 rounded text-white font-bold ml-2'>검색</button>
       </div>
-      <div className="bg-red-50">리뷰순 가격순 평점순</div>
+      <div className="bg-red-50 mt-2 flex justify-end">
+        <p>리뷰순</p>
+        <p>리뷰순</p>
+        <p>리뷰순</p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
         {filteredSingrooms.map((singroom) => (
           <div 
