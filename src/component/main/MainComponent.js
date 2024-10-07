@@ -17,8 +17,8 @@ const MainComponent = () => {
           아이템 4
         </div>       
       </div>
-    <div className="mt-10"v>
-        이벤트
+    <div className="mt-10">
+        <h1>이벤트</h1>
         <MainCarousel/>
     </div>
 

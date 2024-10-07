@@ -4,14 +4,19 @@ const BasicLayout = ({ children }) => {
   return (
     <>
       {/* Header*/}
-      <div>
+      <header className="flex justify-center w-full">
+        <div className="md:w-full lg:w-3/4">
         <BasicHeader />
-      </div>
-
+        </div>
+      </header>
+      <hr className="border-t-2 mt-3 border-cyan-600 w-full" /> 
       <div>
-        <main className="bg-white md:w-full lg:w-full px-5 py-5">
+        <main className ="bg-white flex justify-center w-full ">
+          <div  className="md:w-full lg:w-3/4 px-10 py-5">
           {children}
+          </div>
         </main>
+        
 
         <footer className="bg-yellow-100 md:w-full lg:w-full">
         

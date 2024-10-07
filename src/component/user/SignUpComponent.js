@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const SignupComponent = () => {
 //   const [email, setEmail] = useState("");
@@ -6,7 +7,15 @@ const SignupComponent = () => {
 //   const [confirmPassword, setConfirmPassword] = useState("");
 //   const [userType, setUserType] = useState("individual"); // 기본값은 일반회원
 
-  const handleMoveSignUp = (e) => {
+const [userType, setUserType] = userState('');
+
+const handleUserTypeChange = (type) => {
+  setUserType(type);
+}
+
+const navigate = useNavigate();
+
+const handleMoveSignUp = (e) => {
     e.preventDefault();
     const userType = `${e.target.id}`; // 여기에 가입 처리 로직 추가
     console.log(userType);
@@ -14,7 +23,7 @@ const SignupComponent = () => {
     alert("일반회원입니다.");
    }
    if(userType == "btnJoinInOwner"){
-    alert("기업회원입니다");
+    
    }
   };
   return (

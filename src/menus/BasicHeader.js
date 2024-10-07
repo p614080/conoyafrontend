@@ -4,14 +4,14 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 돋보
 
 const BasicHeader = () => {
   return (
-    <header className="bg-white p-5 font-bold">
-      <div className="flex items-center space-x-2 list-none">
+    <div className="bg-white font-bold pl-7">
+      <div className="flex items-center  pt-10 pl-2 pb-7 space-x-2 list-none">
         {/* 로고 */}
-        <div className="ml-10 mr-10 flex">
+        <div>
           <h1 className="text-2xl font-bold">코노야</h1>
         </div>
         {/* 검색창 */}
-        <div className="flex justify-center w-full max-w-sm">
+        <div className="flex justify-center w-full max-w-sm pl-7">
           <div className="flex-grow">
             <input
               type="text"
@@ -29,31 +29,29 @@ const BasicHeader = () => {
           </div>
         </div>
       </div>
-
       {/* 네비게이션 */}
       <div>
         <nav>
-          <ul className="flex space-x-8 ml-2 list-none pt-5">
+          <ul className="flex space-x-8 ml-2 list-none">
             <li className="hover:underline">
               <Link to={"/"}>Home</Link>
             </li>
-            <li>
+            <li className="hover:underline">
               <Link to={"/singroom/list"}>노래방찾기</Link>
             </li>
-            <li>
+            <li className="hover:underline">
               <Link to={"/user/favorites"}>즐겨찾는 노래방</Link>
             </li>
-            <li>
+            <li className="hover:underline">
               <Link to={"/user/login"}>Login</Link>
             </li>
-            <li>
+            <li className="hover:underline">
               <Link to={"/user/mypage"}>Mypage</Link>
             </li>
           </ul>
         </nav>
       </div>
-      <hr className="border-t-2 mt-3 border-cyan-600 w-full" /> 
-    </header>
+    </div>
   );
 };
 
