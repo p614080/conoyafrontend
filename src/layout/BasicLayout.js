@@ -12,7 +12,7 @@ const BasicLayout = ({ children }) => {
       <hr className="border-t-2 mt-3 border-cyan-600 w-full" /> 
       <div>
         <main className ="bg-white flex justify-center w-full ">
-          <div  className="md:w-full lg:w-3/4 px-10 py-5">
+          <div  className="md:w-full lg:w-3/4 px-10 pt-5">
           {children}
           </div>
         </main>
