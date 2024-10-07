@@ -11,8 +11,8 @@ const Loading = <div>Loading</div>
 const Main = lazy(() => import("../pages/MainPage"))
 //공지사항
 const Notice = lazy(() => import("../pages/NoticePage"))
-//가입페이지(일반회원/기업회원 선택)
-const SignUp = lazy(() => import("../pages/user/SignUpPage"))
+
+
 
 
 
@@ -25,10 +25,7 @@ const root = createBrowserRouter([
         path: "notice",
         element: <Suspense fallback={Loading}><Notice/></Suspense>
     },
-    {
-        path: "signup",
-        element: <Suspense fallback={Loading}><SignUp/></Suspense>
-    },
+    
     {
         path: "user",
         children: userRouter()

@@ -1,6 +1,6 @@
 import RoomComponent from "./RoomComponent";
 
-const RoomListComponent = ({ id }) => {
+const RoomListComponent = () => {
   const roomImages = [
     {
       id: 1,
@@ -11,16 +11,16 @@ const RoomListComponent = ({ id }) => {
       remainingSongs: "",
     },
     {
-      id: 1,
-      image: "https://via.placeholder.com/400x300/1",
+      id: 2,
+      image: "https://via.placeholder.com/400x300/2",
       name: "초코방",
       capacity: "3명",
       remainingTime: "",
       remainingSongs: "3",
     },
     {
-      id: 1,
-      image: "https://via.placeholder.com/400x300/1",
+      id: 3,
+      image: "https://via.placeholder.com/400x300/3",
       name: "온돌방",
       capacity: "3명",
       remainingTime: "",
@@ -30,7 +30,7 @@ const RoomListComponent = ({ id }) => {
 
   return (
     <div>
-      <p>방 리스트 컴포넌트</p>
+      <h2 className="text-xl font-bold mb-4">방 리스트</h2>
       {roomImages.map((room) => (
         <RoomComponent
           key={room.id}
@@ -44,4 +44,5 @@ const RoomListComponent = ({ id }) => {
     </div>
   );
 };
+
 export default RoomListComponent;
