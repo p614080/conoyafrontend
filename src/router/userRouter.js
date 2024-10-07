@@ -10,6 +10,8 @@ const MyPage = lazy(() => import("../pages/user/MyPage.js"))
 
 const Favorites = lazy(() => import("../pages/user/FavoritesPage.js"))
 
+const UserType = lazy(() => import ("../pages/user/UserTypeSelection.js"))
+
 // const LogoutPage = lazy(() => import("../pages/user/LogoutPage"))
 
 // const KakaoRedirect = lazy(() => import("../pages/user/KakaoRedirectPage"))
@@ -24,8 +26,11 @@ const userRouter = () => {
       element: <Suspense fallback={Loading}><Login/></Suspense>
     },
     {
-      path:"signup",
+      path:"join",
       element: <Suspense fallback={Loading}><SingUp/></Suspense>
+    },
+    { path:"usertype",
+      element: <Suspense fallback={Loading}><UserType/></Suspense>
     },
     // {
     //   path:"logout",

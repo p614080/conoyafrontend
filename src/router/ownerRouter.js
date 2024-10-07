@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react"
 
 const Loading =<div>Loading....</div>
 
-const Join = lazy(() => import("../pages/owner/JoinInOwnerPage"))
+const Join = lazy(() => import("../pages/owner/SignUpPage"))
 
 const ownerRouter =() =>{
     return [

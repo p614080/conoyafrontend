@@ -25,7 +25,6 @@ const root = createBrowserRouter([
         path: "notice",
         element: <Suspense fallback={Loading}><Notice/></Suspense>
     },
-    
     {
         path: "user",
         children: userRouter()
