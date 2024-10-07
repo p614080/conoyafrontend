@@ -1,13 +1,35 @@
 import { Link } from "react-router-dom";
-import React, {userState} from "react";
+import React, { useState } from "react";
+import { loginUser } from "../../api/userApi"; // API 함수 import
 
 const LoginComponent = () => {
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      console.log(userEmail);
+      console.log(userPassword)
+      const data = await loginUser(userEmail, userPassword); // loginUser 함수 사용
+      // 로그인 성공 후 처리 (예: 상태 업데이트, 리다이렉션 등)
+    
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 className="text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
           로그인
         </h2>
         <div className="w-full mt-5">
@@ -25,68 +47,74 @@ const LoginComponent = () => {
           </button>
         </div>
       </div>
-      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="#" method="POST">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
-              for="email"
-              class="block text-sm font-medium leading-6 text-gray-900"
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-gray-900"
             >
               이메일
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
-                id="email"
-                name="email"
+                id="userEmail"
+                name="userEmail"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
-            <div class="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <label
-                for="password"
-                class="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="password"
+                className="block text-sm font-medium leading-6 text-gray-900"
               >
                 비밀번호
               </label>
-              <div class="text-sm">
+              <div className="text-sm">
                 <a
                   href="#"
-                  class="font-semibold text-indigo-600 hover:text-indigo-400"
+                  className="font-semibold text-indigo-600 hover:text-indigo-400"
                 >
                   비밀번호를 잊어버리셨나요?
                 </a>
               </div>
             </div>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
-                id="password"
-                name="password"
+                id="userPassword"
+                name="userPassword"
                 type="password"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={userPassword}
+                onChange={(e) => setUserPassword(e.target.value)}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <button
               type="submit"
-              class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={loading}
             >
-              로그인
+              {loading ? '로딩 중...' : '로그인'}
             </button>
           </div>
         </form>
+        {error && <p className="text-red-600">{error}</p>}
         <div>
           <Link to={"/user/usertype"}>
             <button
               type="button"
-              class="flex mt-4 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex mt-4 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               회원가입
             </button>
@@ -96,4 +124,5 @@ const LoginComponent = () => {
     </div>
   );
 };
+
 export default LoginComponent;
