@@ -2,9 +2,9 @@ import { Suspense, lazy } from "react";
 
 const Loading = <div>Loading....</div>
 
+const Join = lazy(() => import("../pages/user/JoinUserPage.js") )
 const Login =  lazy(() => import("../pages/user/LoginPage"))
 
-const SingUp = lazy(() => import("../pages/user/SignUpPage.js"))
 
 const MyPage = lazy(() => import("../pages/user/MyPage.js"))
 
@@ -27,7 +27,7 @@ const userRouter = () => {
     },
     {
       path:"join",
-      element: <Suspense fallback={Loading}><SingUp/></Suspense>
+      element: <Suspense fallback={Loading}><Join/></Suspense>
     },
     { path:"usertype",
       element: <Suspense fallback={Loading}><UserType/></Suspense>
