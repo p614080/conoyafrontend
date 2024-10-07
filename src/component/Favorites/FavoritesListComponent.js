@@ -1,22 +1,17 @@
-// const initState = {
-//     dtoList:[],
-//     pageNumList:[],
-//     pageRequestDTO: null,
-//     prev: false,
-//     next: false,
-//     totalCount: 0,
-//     prevPage: 0,
-//     nextPage: 0,
-//     totalPage: 0,
-//     current: 0
-// }
+import React from 'react';
 
-const FavoritesListComponent = () => {
-    return(
-        <div>
-            즐겨찾기 리스트
-        </div>
-    );
-}
+const FavoritesListComponent = ({ favorites }) => {
+  return (
+    <ul>
+      {favorites.map((favorite, index) => (
+        <li key={index}>
+          <a href={favorite.url} target="_blank" rel="noopener noreferrer">
+            {favorite.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default FavoritesListComponent;
