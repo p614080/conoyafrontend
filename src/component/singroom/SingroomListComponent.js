@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"; // 추가
 import SingroomComponent from "./SingroomComponent";
 import { useState } from "react";
 
+
 const SingroomListComponent = () => {
   const navigate = useNavigate(); // navigate 훅 사용
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,8 +59,8 @@ const SingroomListComponent = () => {
           검색
         </button>
       </div>
-      <div>인기순 평점순 등록일순 가격순</div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 border mt-5">
+      <div className="mt-5 pl-4 border border-gray-300y- rounded-">인기순 평점순 등록일순 가격순</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 border mt-1">
         {filteredSingrooms.map((singroom) => (
           <div
             key={singroom.id}

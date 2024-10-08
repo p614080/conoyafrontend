@@ -3,8 +3,6 @@ import { lazy, Suspense } from "react"
 const Loading =<div>Loading....</div>
 
 const Join = lazy(() => import("../pages/owner/JoinOwnerComponent"))
-const OwnerMyPage = lazy(()=> import("../pages/owner/OwnerMyPage"))
-
 
 const ownerRouter =() =>{
     return [
