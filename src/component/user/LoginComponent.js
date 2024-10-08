@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { loginUser } from "../../api/userApi"; // API 함수 import
+import { loginOwner } from "../../api/ownerApi"; 
 
 const LoginComponent = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [ownerEmail, setOwnerEmail] = useState(""); // 기업 이메일
+  const [ownerPassword, setOwerPassword] = useState(""); //기업 비밀번호
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [userType, setUserType] = useState(""); // 회원 유형 관리
   
+// 회원 유형 선택
+const handleUserTypeSelect = (id) => {
+  setUserType(id); // 버튼 클릭 시 회원 유형 설정
+};
+
+  // 로그인 폼 제출 처리
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -16,10 +25,23 @@ const LoginComponent = () => {
 
     try {
       console.log(userEmail);
-      console.log(userPassword)
-      const data = await loginUser(userEmail, userPassword); // loginUser 함수 사용
-      // 로그인 성공 후 처리 (예: 상태 업데이트, 리다이렉션 등)
-    
+      console.log(userPassword);
+
+      if (userType === "btnLoginUser") {
+        // 일반회원 로그인
+        const data = await loginUser(userEmail, userPassword);
+        alert("일반회원 로그인 성공");
+        // 로그인 성공 후 처리 (예: 상태 업데이트, 리다이렉션 등)
+      } else if (userType === "btnOwnerUser") {
+        // 기업회원 로그인
+        const data = await loginOwner(ownerEmail, ownerPassword);
+        alert("기업회원 로그인 성공");
+        // 로그인 성공 후 처리 (예: 상태 업데이트, 리다이렉션 등)
+      } else {
+        // 회원 유형이 선택되지 않은 경우
+        throw new Error("회원 유형을 선택해 주세요.");
+      }
+
     } catch (error) {
       setError(error.message);
     } finally {
@@ -36,13 +58,26 @@ const LoginComponent = () => {
         <div className="w-full mt-5">
           <button
             id="btnLoginUser"
-            className="w-1/2 justify-center py-2 text-white font-bold bg-indigo-600 rounded hover:bg-indigo-500"
+            type="button"
+            onClick={() => handleUserTypeSelect("btnLoginUser")}
+            className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
+              userType === "btnLoginUser" 
+                ? "bg-indigo-800 text-white scale-105 border-1 border-indigo-600 shadow-lg"
+                : "bg-indigo-600 text-white hover:bg-indigo-700"
+            }`}
+          
           >
             일반회원
           </button>
           <button
-            id="btnLoginUser"
-            className="w-1/2 ml-auto justify-center py-2 text-white font-bold bg-cyan-600 rounded hover:bg-cyan-500"
+            id="btnOwnerUser"
+            type="button"
+            onClick={() => handleUserTypeSelect("btnOwnerUser")}
+            className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
+              userType === "btnOwnerUser" 
+                ? "bg-cyan-800 text-white scale-105 border-1 border-cyan-600 shadow-lg"
+                : "bg-cyan-600 text-white hover:bg-cyan-700"
+            }`}
           >
             기업회원
           </button>
@@ -79,8 +114,7 @@ const LoginComponent = () => {
                 비밀번호
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
+                <a href="#"
                   className="font-semibold text-indigo-600 hover:text-indigo-400"
                 >
                   비밀번호를 잊어버리셨나요?
