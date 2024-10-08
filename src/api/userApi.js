@@ -14,13 +14,17 @@ export const joinUser = async (userData) => {
     }
   };
  
-export const loginUser = async (email, password) => {
-    const response = await fetch(`${host}/login`, { // 실제 API URL로 수정
+export const loginUser = async (UserEmail, UserPassword) => {
+  const form = new FormData()
+  form.append('userEmail', UserEmail)
+  form.append('userPassword', UserPassword)  
+  
+  const response = await fetch(`${host}/login`, { // 실제 API URL로 수정
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: form,
       });
     
       // 응답 상태가 200이 아닐 경우 에러 처리

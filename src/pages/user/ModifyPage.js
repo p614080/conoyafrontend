@@ -3,7 +3,7 @@ import BasicLayout from "../../layout/BasicLayout";
 const ModifyPage = () => {
     return(
         <BasicLayout>
-            <h1> ModifyPagePage</h1>
+            <h1> ModifyPage</h1>
         </BasicLayout>
     );
 }
