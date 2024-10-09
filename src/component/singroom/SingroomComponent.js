@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-const SingroomComponent = ({ image, name, price, address }) => {
+const SingroomComponent = ({ image, name, address }) => {
   return (
     <div>
       <div></div>
@@ -18,9 +18,6 @@ const SingroomComponent = ({ image, name, price, address }) => {
               className="text-gray-300 text-xl" // ml-2로 간격 추가
             />
           </div>
-
-         
-
           <p className="text-gray-600">{address}</p>
         </div>
       </div>

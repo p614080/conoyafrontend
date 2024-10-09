@@ -64,4 +64,17 @@ const ownerHost = `${API_SERVER_HOST}/owners`
     } catch (error) {
       throw new Error(error.response?.data?.message || "노래방 정보 수정 실패");
     }
+    
+  };
+
+  // 노래방리스트 
+  export const getSingroomList = async (singroomData) => {
+    try {
+      const response = await axiosInstance.get(`${ownerHost}/list`, {
+        params: singroomData, // 쿼리 파라미터로 전달
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || "리스트 불러오기 실패");
+    }
   };
