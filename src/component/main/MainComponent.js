@@ -1,5 +1,4 @@
 import MainCarousel from "./MainCarousel"
-
 const MainComponent = () => {
   return (
     <div>

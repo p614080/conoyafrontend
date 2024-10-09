@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 돋보기 아이콘
-
 const BasicHeader = () => {
   return (
     <div className="bg-white font-bold pl-7">
-      <div className="flex items-center  pt-10 pl-2 pb-7 space-x-2 list-none">
+      <div className="flex items-center pt-10 pl-2 pb-7 space-x-2 list-none">
         {/* 로고 */}
         <div>
           <h1 className="text-2xl font-bold">코노야</h1>
@@ -43,10 +42,10 @@ const BasicHeader = () => {
               <Link to={"/user/favorites"}>즐겨찾는 노래방</Link>
             </li>
             <li className="hover:underline">
-              <Link to={"/user/login"}>Login</Link>
+              <Link to={"/user/mypage"}>Mypage</Link>
             </li>
             <li className="hover:underline">
-              <Link to={"/user/mypage"}>Mypage</Link>
+              <Link to={"/user/login"}>Login</Link>
             </li>
           </ul>
         </nav>

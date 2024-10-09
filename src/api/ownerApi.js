@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./axiosInstance";
 
 export const API_SERVER_HOST = `http://localhost:8080`
@@ -14,17 +13,31 @@ const ownerHost = `${API_SERVER_HOST}/owners`
     }
   };
 
-  export const loginOwner = async (ownerEmail, ownerPassword) => {
+  export const loginOwner = async (UserEmail, UserPassword) => {
     try {
-      const response = await axiosInstance.post(`${ownerHost}/login`, {
-        ownerEmail,
-        ownerPassword,
+      const ownerDto = JSON.stringify({ ownerEmail: UserEmail, ownerPassword: UserPassword }); // 변수 이름 수정
+      const response = await fetch(`${ownerHost}/login`, { // 실제 API URL로 수정
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: ownerDto,
       });
-      return response.data;
+  
+      // 응답 상태가 200이 아닐 경우 에러 처리
+      if (!response.ok) {
+        const errorText = await response.text(); // 응답 텍스트를 가져옵니다.
+        throw new Error(`로그인에 실패했습니다: ${errorText}`); // 에러 메시지에 추가
+      }
+  
+      const data = await response.json(); // JSON 파싱
+      return data;
+  
     } catch (error) {
-      throw new Error(error.response?.data?.message || "기업회원 로그인 실패");
+      throw new Error(`로그인 처리 중 오류가 발생했습니다: ${error.message}`); // 에러 메시지 처리
     }
   };
+  
 
   export const getOwnerInfo = async () => {
     try {
