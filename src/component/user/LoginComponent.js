@@ -15,8 +15,8 @@ const LoginComponent = () => {
   const navigate = useNavigate(); // navigate 사용
 
   // 회원 유형 선택
-  const handleUserTypeSelect = (id) => {
-    setUserType(id);
+  const handleUserTypeSelect = (userType) => {
+    setUserType(userType);
   };
 
   // 로그인 폼 제출 처리
@@ -28,11 +28,11 @@ const LoginComponent = () => {
     try {
       let data;
 
-      if (userType === "btnLoginUser") {
+      if (userType === "user") {
         // 일반회원 로그인
         data = await loginUser(userEmail, userPassword);
         alert("일반회원 로그인 성공");
-      } else if (userType === "btnLoginOwner") {
+      } else if (userType === "owner") {
         // 기업회원 로그인
         data = await loginOwner(userEmail, userPassword);
         alert("기업회원 로그인 성공");
