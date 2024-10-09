@@ -9,7 +9,7 @@ const LoginComponent = () => {
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [userType, setUserType] = useState("btnLoginUser");
+  const [userType, setUserType] = useState("user");
 
   const { login } = useAuth(); // AuthContext의 login 함수 가져오기
   const navigate = useNavigate(); // navigate 사용
@@ -32,7 +32,7 @@ const LoginComponent = () => {
         // 일반회원 로그인
         data = await loginUser(userEmail, userPassword);
         alert("일반회원 로그인 성공");
-      } else if (userType === "btnOwnerUser") {
+      } else if (userType === "btnLoginOwner") {
         // 기업회원 로그인
         data = await loginOwner(userEmail, userPassword);
         alert("기업회원 로그인 성공");
@@ -40,10 +40,17 @@ const LoginComponent = () => {
         throw new Error("회원 유형을 선택해 주세요.");
       }
 
+      const userInfo = {
+        ...data,
+        userType
+      }
+
       // 로그인 성공 후 처리
-      login(data.user); // AuthContext의 login 호출
-      sessionStorage.setItem('user', JSON.stringify(data.user));
-      navigate("/"); // 리다이렉션
+      login(userInfo); // AuthContext의 login 호출
+      localStorage.setItem('user', JSON.stringify(userInfo));
+
+      //리다이렉션 메인페이지
+      // navigate("/"); 
 
     } catch (error) {
       setError(error.message);
@@ -62,9 +69,9 @@ const LoginComponent = () => {
           <button
             id="btnLoginUser"
             type="button"
-            onClick={() => handleUserTypeSelect("btnLoginUser")}
+            onClick={() => handleUserTypeSelect("user")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
-              userType === "btnLoginUser" 
+              userType === "user" 
                 ? "bg-indigo-800 text-white scale-105 border-1 border-indigo-600 shadow-lg"
                 : "bg-indigo-600 text-white hover:bg-indigo-700"
             }`}
@@ -72,11 +79,11 @@ const LoginComponent = () => {
             일반회원
           </button>
           <button
-            id="btnOwnerUser"
+            id="btnLoginOwner"
             type="button"
-            onClick={() => handleUserTypeSelect("btnOwnerUser")}
+            onClick={() => handleUserTypeSelect("owner")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
-              userType === "btnOwnerUser" 
+              userType === "owner" 
                 ? "bg-cyan-800 text-white scale-105 border-1 border-cyan-600 shadow-lg"
                 : "bg-cyan-600 text-white hover:bg-cyan-700"
             }`}
