@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // navigate를 useNavigate로 수정
-import { loginUser } from "../../api/userApi"; // API 함수 import
+import { Link, useNavigate } from "react-router-dom"; 
+import { loginUser } from "../../api/userApi"; 
 import { loginOwner } from "../../api/ownerApi"; 
-import { useAuth } from "../../context/AuthContext"; // AuthContext import
+import { useAuth } from "../../context/AuthContext"; 
 
 const LoginComponent = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -11,15 +11,13 @@ const LoginComponent = () => {
   const [error, setError] = useState(null);
   const [userType, setUserType] = useState("user");
 
-  const { login } = useAuth(); // AuthContext의 login 함수 가져오기
-  const navigate = useNavigate(); // navigate 사용
+  const { login } = useAuth(); 
+  const navigate = useNavigate(); 
 
-  // 회원 유형 선택
-  const handleUserTypeSelect = (userType) => {
-    setUserType(userType);
+  const handleUserTypeSelect = (type) => {
+    setUserType(type);
   };
 
-  // 로그인 폼 제출 처리
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,28 +27,21 @@ const LoginComponent = () => {
       let data;
 
       if (userType === "user") {
-        // 일반회원 로그인
         data = await loginUser(userEmail, userPassword);
         alert("일반회원 로그인 성공");
       } else if (userType === "owner") {
-        // 기업회원 로그인
         data = await loginOwner(userEmail, userPassword);
         alert("기업회원 로그인 성공");
       } else {
         throw new Error("회원 유형을 선택해 주세요.");
       }
 
-      const userInfo = {
-        ...data,
-        userType
-      }
-
-      // 로그인 성공 후 처리
-      login(userInfo); // AuthContext의 login 호출
-      localStorage.setItem('user', JSON.stringify(userInfo));
-
-      //리다이렉션 메인페이지
-      // navigate("/"); 
+      const userInfo = { ...data, userType };
+      
+      // 로그인 후 정보 저장
+      sessionStorage.setItem('user', JSON.stringify(userInfo));
+      login(userInfo); 
+      navigate("/"); 
 
     } catch (error) {
       setError(error.message);
@@ -67,7 +58,6 @@ const LoginComponent = () => {
         </h2>
         <div className="w-full mt-5">
           <button
-            id="btnLoginUser"
             type="button"
             onClick={() => handleUserTypeSelect("user")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
@@ -79,7 +69,6 @@ const LoginComponent = () => {
             일반회원
           </button>
           <button
-            id="btnLoginOwner"
             type="button"
             onClick={() => handleUserTypeSelect("owner")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
@@ -95,10 +84,7 @@ const LoginComponent = () => {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
+            <label htmlFor="userEmail" className="block text-sm font-medium leading-6 text-gray-900">
               이메일
             </label>
             <div className="mt-2">
@@ -116,18 +102,13 @@ const LoginComponent = () => {
           </div>
           <div>
             <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="userPassword" className="block text-sm font-medium leading-6 text-gray-900">
                 비밀번호
               </label>
               <div className="text-sm">
-                <a href="#"
-                  className="font-semibold text-indigo-600 hover:text-indigo-400"
-                >
+                <Link to="#" className="font-semibold text-indigo-600 hover:text-indigo-400">
                   비밀번호를 잊어버리셨나요?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="mt-2">
@@ -155,7 +136,7 @@ const LoginComponent = () => {
         </form>
         {error && <p className="text-red-600">{error}</p>}
         <div>
-          <Link to={"/user/usertype"}>
+          <Link to="/user/usertype">
             <button
               type="button"
               className="flex mt-4 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

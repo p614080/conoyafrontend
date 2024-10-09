@@ -14,7 +14,6 @@ const LOGOUT = 'LOGOUT';
 
 // 상태 관리용 리듀서
 const authReducer = (state, action) => {
-    console.log("Action received:", action);
     switch (action.type) {
         case LOGIN:
             return { user: action.payload };
