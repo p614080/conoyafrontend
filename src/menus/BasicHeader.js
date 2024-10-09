@@ -25,16 +25,21 @@ const BasicHeader = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="hover:underline">
-                <Link to="/singroom/list">노래방찾기</Link>
-              </li>
+            <Link to="/singroom/list">노래방찾기</Link>
+          </li>
           {userInfo ? (
             <>
-             
+              {userInfo.userType !== "owner" && (
+                <li className="hover:underline">
+                  <Link to="/user/favorites">즐겨찾는 노래방</Link>
+                </li>
+              )}
               <li className="hover:underline">
-                <Link to="/user/favorites">즐겨찾는 노래방</Link>
-              </li>
-              <li className="hover:underline">
-                <Link to="/user/mypage">Mypage</Link>
+                {userInfo.userType === "owner" ? (
+                  <Link to="/owner/mypage">Owner Mypage</Link>
+                ) : (
+                  <Link to="/user/mypage">User Mypage</Link>
+                )}
               </li>
               <li className="hover:underline">
                 <button onClick={logout} className="hover:text-red-600">
