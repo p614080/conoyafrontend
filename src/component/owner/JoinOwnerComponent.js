@@ -6,18 +6,18 @@ import { joinOwner} from "../../api/ownerApi"; // API 함수 가져오기
 const JoinOwnerComponent = () => {
   const [ownerEmail, setOwnerEmail] = useState(""); // 기업 이메일
   const [ownerPassword, setOwerPassword] = useState(""); //기업 비밀번호
-  const [confirmPassword, setConfirmPassword] = useState(""); //기업 비밀번호 확인
+  const [ownerPasswordCheck, setOwnerPasswordCheck] = useState(""); //기업 비밀번호 확인
   const [ownerNum, setOwnerNum] = useState(""); //사업자 번호
   const [storeName, setStoreName] = useState(""); //사업장 명
   const [location, setLocation] = useState(""); // 사업장 주소
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
   const handleMoveSignUp = async (e) => {
     e.preventDefault();
 
     // 비밀번호 확인
-    if (ownerPassword !== confirmPassword) {
+    if (ownerPassword !== ownerPasswordCheck) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
@@ -25,7 +25,7 @@ const JoinOwnerComponent = () => {
     const joinData = {
       ownerEmail,
       ownerPassword,
-      confirmPassword,
+      ownerPasswordCheck,
       ownerNum,
       storeName,
       location,
@@ -35,7 +35,7 @@ const JoinOwnerComponent = () => {
     if (
       !ownerEmail ||
       !ownerPassword ||
-      !confirmPassword ||
+      !ownerPasswordCheck ||
       !ownerNum ||
       !storeName ||
       !location
@@ -100,16 +100,12 @@ const JoinOwnerComponent = () => {
       <input
         type="password"
         placeholder="비밀번호 확인"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        value={ownerPasswordCheck}
+        onChange={(e) => setOwnerPasswordCheck(e.target.value)}
         className="block w-full p-2 border border-gray-300 rounded-md mb-4"
         required
       />
-      <textarea
-      placeholder="기업소개"
-      value={description}
-      onChange={(e) => setDescription(e.target.value)}
-      />
+
     
 
       <button
