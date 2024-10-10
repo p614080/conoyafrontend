@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import FavoritesListComponent from './FavoritesListComponent';
+import { getUserFavorites } from '../../api/favoritesApi';
+import { useAuth } from '../../context/AuthContext';
+
 
 const FavoritesComponent = ({ isLoggedIn }) => {
+  const {state} = useAuth();
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
+    console.log(useAuth);
     const fetchFavorites = async () => {
       if (!isLoggedIn) return; // 로그인하지 않았으면 데이터 가져오지 않음
 
       try {
-        const response = await fetch('https://api.example.com/favorites'); // 백엔드 API 주소
-        if (!response.ok) {
-          throw new Error('네트워크 응답이 좋지 않습니다.');
-        }
-        const data = await response.json();
-        setFavorites(data); // 데이터 설정
+        const response = await getUserFavorites(state.user.userId) // 백엔드 API 주소
+        setFavorites(response);
       } catch (error) {
         setError(error.message); // 에러 처리
       } finally {
