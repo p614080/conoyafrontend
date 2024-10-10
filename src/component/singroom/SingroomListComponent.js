@@ -51,7 +51,7 @@ const SingroomListComponent = () => {
         />
         <button
           onClick={() => fetchData(searchTerm)} // 검색 버튼 클릭 시 fetchData 호출
-          className="bg-cyan-500 pl-2 pr-2 rounded-md text-white font-bold ml-1"
+          className="bg-customCornflower pl-2 pr-2 rounded-md text-white font-bold ml-1"
         >
           검색
         </button>

@@ -9,7 +9,7 @@ const BasicLayout = ({ children }) => {
         <BasicHeader />
         </div>
       </header>
-      <hr className="border-t-2 mt-3 border-cyan-600 w-full" /> 
+      <hr className="border-t-2 mt-3 border-customCornflower w-full" /> 
       <div>
         <main className ="bg-white flex justify-center w-full ">
           <div  className="md:w-full lg:w-3/4 px-10 pt-5">

@@ -63,8 +63,8 @@ const LoginComponent = () => {
             onClick={() => handleUserTypeSelect("user")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
               userType === "user" 
-                ? "bg-indigo-800 text-white scale-105 border-1 border-indigo-600 shadow-lg"
-                : "bg-indigo-600 text-white hover:bg-indigo-700"
+                ? "bg-violet-500 text-white scale-105 border-1 hover:bg-indigo-700"
+                : "bg-customCornflower text-white hover:bg-indigo-700"
             }`}
           >
             일반회원
@@ -74,8 +74,8 @@ const LoginComponent = () => {
             onClick={() => handleUserTypeSelect("owner")}
             className={`w-1/2 py-3 font-bold rounded transition-all duration-300 ${
               userType === "owner" 
-                ? "bg-cyan-800 text-white scale-105 border-1 border-cyan-600 shadow-lg"
-                : "bg-cyan-600 text-white hover:bg-cyan-700"
+                ? "bg-orange-400 text-white scale-105 border-1 hover:bg-orange-300 shadow-lg"
+                : "bg-orange-200 text-white hover:bg-orange-300"
             }`}
           >
             기업회원
@@ -128,7 +128,7 @@ const LoginComponent = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-customCornflower px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-customCornflower"
               disabled={loading}
             >
               {loading ? '로딩 중...' : '로그인'}
@@ -140,7 +140,7 @@ const LoginComponent = () => {
           <Link to="/user/usertype">
             <button
               type="button"
-              className="flex mt-4 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex mt-4 w-full justify-center rounded-md bg-customCornflower px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-customCornflower"
             >
               회원가입
             </button>

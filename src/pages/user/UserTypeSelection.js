@@ -25,13 +25,13 @@ const UserTypeSelectionPage = () => {
             <div className="flex space-x-4">
               <button
                 onClick={() => handleUserTypeSelect("user")}
-                className="mt-5 px-4 py-2 bg-indigo-600 text-white font-bold rounded hover:bg-indigo-500"
+                className="mt-5 px-4 py-2 bg-customCornflower text-white font-bold rounded hover:bg-violet-600"
               >
                 일반회원
               </button>
               <button
                 onClick={() => handleUserTypeSelect("owner")}
-                className="mt-5 px-4 py-2 bg-cyan-600 text-white font-bold rounded hover:bg-cyan-500"
+                className="mt-5 px-4 py-2 bg-orange-300 text-white font-bold rounded hover:bg-orange-500"
               >
                 기업회원
               </button>
