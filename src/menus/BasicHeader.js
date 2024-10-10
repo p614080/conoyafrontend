@@ -5,9 +5,6 @@ import { useAuth } from "../context/AuthContext"; // AuthContext import
 const BasicHeader = () => {
   const { state, logout } = useAuth();
   const userInfo = state.user; // state.user로 변경
-
-  console.log(userInfo);
-
   return (
     <div className="bg-white font-bold pl-7">
       <div className="flex items-center pt-10 pl-2 pb-7 space-x-2">
