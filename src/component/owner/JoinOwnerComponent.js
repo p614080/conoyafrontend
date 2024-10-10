@@ -50,7 +50,7 @@ const JoinOwnerComponent = () => {
       await joinOwner({ ...joinData }); // 기업회원 가입 API 호출
 
       // 페이지 이동
-      navigate("/some-route"); // 필요한 라우트로 이동
+      navigate("/"); // 필요한 라우트로 이동
     } catch (error) {
       alert(error.message); // 에러 메시지 표시
     }
