@@ -44,9 +44,9 @@ const JoinOwnerComponent = () => {
       return;
     }
 
-    alert("기업회원으로 가입합니다.");
-
+   
     try {
+      alert("기업회원으로 가입합니다.");
       await joinOwner({ ...joinData }); // 기업회원 가입 API 호출
 
       // 페이지 이동

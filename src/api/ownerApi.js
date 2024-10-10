@@ -6,7 +6,16 @@ const ownerHost = `${API_SERVER_HOST}/owners`
 
   export const joinOwner = async (ownerData) => {
     try {
-      const response = await axiosInstance.post(`${ownerHost}/join2`, ownerData);
+      const JoinDTO = {
+        ownerEmail : ownerData.ownerEmail,                             
+        ownerPassword : ownerData.ownerPassword,                      
+        ownerPasswordCheck : ownerData.confirmPassword,
+        ownerNum : ownerData.ownerNum,
+        userNickname : ownerData.userNickname,
+        storeName : ownerData.storeName,   
+        location : ownerData.location
+      }
+      const response = await axiosInstance.post(`${ownerHost}/join2`, JoinDTO);
       return response.data; // 성공적으로 응답을 반환합니다.
     } catch (error) {
       throw new Error(error.response.data.message || '회원가입 실패');
