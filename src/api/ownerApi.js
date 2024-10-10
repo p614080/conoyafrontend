@@ -46,8 +46,19 @@ const ownerHost = `${API_SERVER_HOST}/owners`
       throw new Error(`로그인 처리 중 오류가 발생했습니다: ${error.message}`); // 에러 메시지 처리
     }
   };
-  
 
+  export const getSingRoomInfo = async (id) => {
+  try {
+    const response = await axiosInstance.get(`${ownerHost}/detail/${id}`);
+    return {
+      owner: response.data.owner, // 노래방 소유자 정보
+      rooms: response.data.rooms,   // 노래방 방 정보
+    };
+  } catch (error) {
+    throw new Error(error.response?.data?.message || "회원 정보 조회 실패");
+  }
+};
+  
   export const getOwnerInfo = async () => {
     try {
       const response = await axiosInstance.get(`${ownerHost}/info`);
