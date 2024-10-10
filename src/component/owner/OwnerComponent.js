@@ -21,6 +21,8 @@ const OwnerComponent = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
+  
+ // 사용자 정보를 가져오는 함수
   const fetchOwnerInfo = async () => {
     try {
       const data = await getOwnerInfo();
@@ -59,20 +61,23 @@ const OwnerComponent = () => {
     }
   };
 
-  const handleChangePassword = async () => {
-    if (!currentPassword || !newPassword) {
-      alert("모든 필드를 입력해 주세요.");
-      return;
-    }
+  // OwnerComponent.js에서 수정
+const handleChangePassword = async () => {
+  if (!currentPassword || !newPassword) {
+    alert("모든 필드를 입력해 주세요.");
+    return;
+  }
 
-    try {
-      await changeOwnerPassword({ currentPassword, newPassword });
-      alert("비밀번호가 성공적으로 변경되었습니다.");
-      setPasswordChangeMode(false);
-    } catch (error) {
-      alert("비밀번호 변경에 실패했습니다. 현재 비밀번호를 확인해 주세요.");
-    }
-  };
+  try {
+    const ownerEmail = ownerInfo.ownerEmail; // ownerEmail 가져오기
+    await changeOwnerPassword(ownerEmail, { currentPassword, newPassword });
+    alert("비밀번호가 성공적으로 변경되었습니다.");
+    setPasswordChangeMode(false);
+  } catch (error) {
+    alert("비밀번호 변경에 실패했습니다. 현재 비밀번호를 확인해 주세요.");
+    console.error("비밀번호 변경 중 오류가 발생했습니다:", error);
+  }
+};
 
   return (
     <div className="container mx-auto mt-10 p-6 space-y-6 max-w-lg">
