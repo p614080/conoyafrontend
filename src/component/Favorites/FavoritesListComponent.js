@@ -15,3 +15,5 @@ const FavoritesListComponent = ({ favorites }) => {
 };
 
 export default FavoritesListComponent;
+
+

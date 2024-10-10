@@ -40,3 +40,4 @@ const FavoritesComponent = ({ isLoggedIn }) => {
 };
 
 export default FavoritesComponent;
+

@@ -38,10 +38,11 @@ const LoginComponent = () => {
 
       const userInfo = { ...data, userType };
       
-      // 로그인 후 정보 저장
-      sessionStorage.setItem('user', JSON.stringify(userInfo));
-      login(userInfo); 
-      navigate("/"); 
+     // 로그인 후 정보 저장
+    sessionStorage.setItem('user', JSON.stringify(userInfo));
+    sessionStorage.setItem('userEmail', userEmail); // 이메일 개별 저장
+    login(userInfo);
+    navigate("/");
 
     } catch (error) {
       setError(error.message);

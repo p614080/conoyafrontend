@@ -33,3 +33,16 @@ export const loginUser = async (UserEmail, UserPassword) => {
       const data = await response.json(); // JSON 파싱
       return data;
     };
+
+  
+
+// updateUser 함수 수정 (userApi.js)
+export const updateUser = async (updatedUserInfo) => {
+  try {
+    // 절대 경로로 요청을 보냅니다.
+    const response = await axios.post('http://localhost:8080/user/updateUser', updatedUserInfo);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || "사용자 정보 업데이트 실패");
+  }
+};
