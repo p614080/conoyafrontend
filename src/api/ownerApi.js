@@ -9,7 +9,7 @@ const ownerHost = `${API_SERVER_HOST}/owners`
       const JoinDTO = {
         ownerEmail : ownerData.ownerEmail,                             
         ownerPassword : ownerData.ownerPassword,                      
-        ownerPasswordCheck : ownerData.confirmPassword,
+        ownerPasswordCheck : ownerData.ownerPasswordCheck,
         ownerNum : ownerData.ownerNum,
         userNickname : ownerData.userNickname,
         storeName : ownerData.storeName,   
