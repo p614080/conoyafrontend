@@ -67,7 +67,7 @@ const SingroomListComponent = () => {
             className="cursor-pointer"
           >
             <SingroomComponent
-              id={singroom.ownerId}
+              ownerId={singroom.ownerId}
               image={singroom.imageUrl} // 이미지 URL로 수정
               name={singroom.storeName} // 상점 이름으로 수정
               address={singroom.location} // 위치로 수정

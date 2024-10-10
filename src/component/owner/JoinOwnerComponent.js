@@ -1,8 +1,7 @@
 // src/SignupComponent.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { joinOwner, fetchOwnerInfo} from "../../api/ownerApi"; // API 함수 가져오기
-
+import { joinOwner, fetchOwnerInfo } from "../../api/ownerApi"; // API 함수 가져오기
 
 const JoinOwnerComponent = () => {
   const [ownerEmail, setOwnerEmail] = useState(""); // 기업 이메일
@@ -45,16 +44,14 @@ const JoinOwnerComponent = () => {
       return;
     }
 
-   
     try {
       alert("기업회원으로 가입합니다.");
       await joinOwner({ ...joinData }); // 기업회원 가입 API 호출
 
-   // 회원가입 후 회원 정보를 다시 가져오기
-   const ownerData = await fetchOwnerInfo(); // fetchOwnerInfo 호출
-   console.log("회원 정보:", ownerData);
+      // 회원가입 후 회원 정보를 다시 가져오기
+      const ownerData = await fetchOwnerInfo(); // fetchOwnerInfo 호출
+      console.log("회원 정보:", ownerData);
 
-      
       // 페이지 이동
       navigate("/"); // 필요한 라우트로 이동
     } catch (error) {
@@ -65,58 +62,57 @@ const JoinOwnerComponent = () => {
   return (
     <div className="mt-5 flex flex-col items-center">
       <h2 className="text-xl font-bold mb-4">회원가입 ('기업회원')</h2>
-
-      <input
-        placeholder="사업자등록번호"
-        value={ownerNum}
-        onChange={(e) => setOwnerNum(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-      <input
-        placeholder="사업장명"
-        value={storeName}
-        onChange={(e) => setStoreName(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-      <input
-        placeholder="사업장 주소"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-      <input
-        type="email"
-        placeholder="이메일"
-        value={ownerEmail}
-        onChange={(e) => setOwnerEmail(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-      <input
-        type="password"
-        placeholder="비밀번호"
-        value={ownerPassword}
-        onChange={(e) => setOwerPassword(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-      <input
-        type="password"
-        placeholder="비밀번호 확인"
-        value={ownerPasswordCheck}
-        onChange={(e) => setOwnerPasswordCheck(e.target.value)}
-        className="block w-full p-2 border border-gray-300 rounded-md mb-4"
-        required
-      />
-
-    
+      <div className="border-2 border-customLavender p-5">
+        <input
+          placeholder="사업자등록번호"
+          value={ownerNum}
+          onChange={(e) => setOwnerNum(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+        <input
+          placeholder="사업장명"
+          value={storeName}
+          onChange={(e) => setStoreName(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+        <input
+          placeholder="사업장 주소"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+        <input
+          type="email"
+          placeholder="이메일"
+          value={ownerEmail}
+          onChange={(e) => setOwnerEmail(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={ownerPassword}
+          onChange={(e) => setOwerPassword(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+        <input
+          type="password"
+          placeholder="비밀번호 확인"
+          value={ownerPasswordCheck}
+          onChange={(e) => setOwnerPasswordCheck(e.target.value)}
+          className="block w-full p-2 border border-gray-300 rounded-md mb-4"
+          required
+        />
+      </div>
 
       <button
         onClick={handleMoveSignUp}
-        className="px-4 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-500"
+        className="mt-5 px-4 py-2 bg-customCornflower text-white font-bold rounded hover:bg-blue-500"
       >
         가입하기
       </button>

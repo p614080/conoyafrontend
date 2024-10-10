@@ -2,8 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getSingRoomInfo } from "../../api/ownerApi";
-
 import RoomListComponent from "../room/RoomListComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons/faMapMarkerAlt";
 
 const SingroomDetailComponent = () => {
   const { id } = useParams(); // URL에서 ID 추출
@@ -43,9 +44,15 @@ const SingroomDetailComponent = () => {
     <div>
       <div className="border">
         <img src={singroom.owner.imageUrl} alt={singroom.name} />
+
         <h1 className="text-3xl font-bold">{singroom.owner.storeName}</h1>
-        <p>주소: {singroom.owner.location}</p>
-        <p>소개글</p>
+        <div className="inline-flex">
+        <FontAwesomeIcon
+          icon={faMapMarkerAlt}
+          className="mr-2"
+        />
+        <p>{singroom.owner.location}</p>
+        </div>
         <p>{singroom.owner.description}</p>
       </div>
       <div>
