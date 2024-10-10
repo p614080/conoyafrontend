@@ -36,13 +36,38 @@ export const loginUser = async (UserEmail, UserPassword) => {
 
   
 
-// updateUser 함수 수정 (userApi.js)
-export const updateUser = async (updatedUserInfo) => {
+// 사용자 정보 가져오기 함수 추가
+export const getUserInfo = async (userEmail) => {
   try {
-    // 절대 경로로 요청을 보냅니다.
-    const response = await axios.post('http://localhost:8080/user/updateUser', updatedUserInfo);
+    // userEmail을 쿼리 파라미터로 전달
+    const response = await axiosInstance.get(`/user/info`, {
+      params: { userEmail },
+    });
     return response.data;
   } catch (error) {
-    throw new Error(error.response?.data?.message || "사용자 정보 업데이트 실패");
+    throw new Error(error.response?.data?.message || "사용자 정보 조회 실패");
   }
 };
+
+// 닉네임 업데이트 함수 추가
+export const updateUserNickname = async (updatedUserInfo) => {
+  try {
+    const response = await axiosInstance.put(`${host}/updateNickname`, updatedUserInfo);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || "닉네임 업데이트 실패");
+  }
+};
+
+
+// 비밀번호 업데이트 함수 추가
+export const updateUserPassword = async (updatedUserInfo) => {
+  try {
+    const response = await axiosInstance.put(`${host}/updatePassword`, updatedUserInfo);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || "비밀번호 업데이트 실패");
+  }
+};
+
+

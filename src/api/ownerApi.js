@@ -50,7 +50,7 @@ const ownerHost = `${API_SERVER_HOST}/owners`
 
   export const getOwnerInfo = async () => {
     try {
-      const response = await axiosInstance.get(`${ownerHost}/info`);
+      const response = await axiosInstance.get(`${ownerHost}/mypage`);
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.message || "회원 정보 조회 실패");
@@ -85,5 +85,26 @@ const ownerHost = `${API_SERVER_HOST}/owners`
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.message || "리스트 불러오기 실패");
+    }
+  };
+
+  
+  export const fetchOwnerInfo = async () => {
+    try {
+      const data = await getOwnerInfo();
+      return {
+        ownerEmail: data.owneremail,
+        ownerNum: data.ownerNumber,
+        singroom: {
+          name: data.singroom.name,
+          price: data.singroom.price,
+          image: data.singroom.image,
+          roomNumber: data.singroom.roomNumber,
+          roomCapacity: data.singroom.roomCapacity,
+        },
+      };
+    } catch (error) {
+      console.error("회원 정보를 가져오는 중 오류가 발생했습니다.", error);
+      throw error;
     }
   };

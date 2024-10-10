@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import UserComponent from "../component/user/UserComponent"; 
 
 const Loading = <div>Loading....</div>
 
@@ -51,9 +52,13 @@ const userRouter = () => {
     {   path:"favorites",
         element: <Suspense fallback={Loading}><Favorites/></Suspense>
 
+    },
+    {
+      path: "info",
+      element: <UserComponent /> // UserComponent를 경로에 추가합니다.
     }
 
-  ]
+  ];
 
 }
 

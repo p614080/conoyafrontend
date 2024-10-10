@@ -7,7 +7,7 @@ const OwnerComponent = () => {
   const [ownerInfo, setOwnerInfo] = useState({
     ownerEmail: "",
     ownerNum: "",
-    signUpDate: "",
+  
   });
 
   const [singroom, setSingroom] = useState({
@@ -21,29 +21,30 @@ const OwnerComponent = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
+  const fetchOwnerInfo = async () => {
+    try {
+      const data = await getOwnerInfo();
+      setOwnerInfo({
+        ownerEmail: data.ownerEmail,
+        ownerNum: data.ownerNum,
+        // signUpDate: data.signUpDate,
+      });
+      setSingroom({
+        name: data.singroom?.name || "",
+        price: data.singroom?.price || "",
+        image: data.singroom?.image || "",
+        roomNumber: data.singroom?.roomNumber || "",
+        roomCapacity: data.singroom?.roomCapacity || "",
+      });
+    } catch (error) {
+      console.error("회원 정보를 가져오는 중 오류가 발생했습니다.", error);
+    }
+  };
+  
   useEffect(() => {
-    const fetchOwnerInfo = async () => {
-      try {
-        const data = await getOwnerInfo();
-        setOwnerInfo({
-          ownerEmail: data.email,
-          ownerNum: data.businessNumber,
-          signUpDate: data.signUpDate,
-        });
-        setSingroom({
-          name: data.singroom.name,
-          price: data.singroom.price,
-          image: data.singroom.image,
-          roomNumber: data.singroom.roomNumber,
-          roomCapacity: data.singroom.roomCapacity,
-        });
-      } catch (error) {
-        console.error("회원 정보를 가져오는 중 오류가 발생했습니다.", error);
-      }
-    };
-
-    fetchOwnerInfo();
+    fetchOwnerInfo(); // 컴포넌트가 처음 렌더링될 때 호출
   }, []);
+  
 
   const toggleEditMode = () => setEditMode(!editMode);
   const togglePasswordChangeMode = () => setPasswordChangeMode(!passwordChangeMode);
@@ -80,7 +81,7 @@ const OwnerComponent = () => {
         <h2 className="text-2xl font-bold text-cyan-600 mb-4 text-center">점주 정보</h2>
         <p className="text-gray-700 mb-2"><strong>사업자 번호:</strong> {ownerInfo.ownerNum}</p>
         <p className="text-gray-700 mb-2"><strong>아이디:</strong> {ownerInfo.ownerEmail}</p>
-        <p className="text-gray-700 mb-4"><strong>회원가입 날짜:</strong> {ownerInfo.signUpDate}</p>
+        {/* <p className="text-gray-700 mb-4"><strong>회원가입 날짜:</strong> {ownerInfo.signUpDate}</p> */}
         <button
           onClick={togglePasswordChangeMode}
           className="w-full py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors"

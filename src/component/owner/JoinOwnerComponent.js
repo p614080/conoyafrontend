@@ -1,7 +1,8 @@
 // src/SignupComponent.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { joinOwner} from "../../api/ownerApi"; // API 함수 가져오기
+import { joinOwner, fetchOwnerInfo} from "../../api/ownerApi"; // API 함수 가져오기
+
 
 const JoinOwnerComponent = () => {
   const [ownerEmail, setOwnerEmail] = useState(""); // 기업 이메일
@@ -49,6 +50,11 @@ const JoinOwnerComponent = () => {
       alert("기업회원으로 가입합니다.");
       await joinOwner({ ...joinData }); // 기업회원 가입 API 호출
 
+   // 회원가입 후 회원 정보를 다시 가져오기
+   const ownerData = await fetchOwnerInfo(); // fetchOwnerInfo 호출
+   console.log("회원 정보:", ownerData);
+
+      
       // 페이지 이동
       navigate("/"); // 필요한 라우트로 이동
     } catch (error) {
