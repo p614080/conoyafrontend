@@ -1,3 +1,4 @@
+import BasicFooter from "../menus/BasicFooter";
 import BasicHeader from "../menus/BasicHeader";
 
 const BasicLayout = ({ children }) => {
@@ -18,8 +19,10 @@ const BasicLayout = ({ children }) => {
         </main>
         
 
-        <footer className="bg-yellow-100 md:w-full lg:w-full">
-        
+        <footer className="mt-10 bg-customPeriwinkle md:w-full lg:w-full">
+          <div class = "md:w-full lg:w-3/4">
+          <BasicFooter/>
+          </div>
         </footer>
       </div>
     </>
