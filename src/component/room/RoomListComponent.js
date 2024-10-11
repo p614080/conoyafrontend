@@ -14,8 +14,8 @@ const RoomListComponent = ({ rooms }) => {
             image={room.imageUrl} // 방 이미지 URL
             name={`방 ${room.roomNumber}`} // 방 이름
             capacity={`${room.roomSize}명`} // 방 크기
-            remainingTime={room.remainingTime || "정보 없음"} // 남은 시간
-            remainingSongs={room.remainingSongs || "정보 없음"} // 남은 노래 수
+            remainingTime={room.paymentTime || "정보 없음"} // 남은 시간
+            remainingSongs={room.paymentCoin || "정보 없음"} // 남은 노래 수
           />
         ))}
       </div>

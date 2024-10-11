@@ -47,6 +47,7 @@ export  const loginOwner = async (ownerEmail, ownerPassword) => {
 export const getSingRoomInfo = async (id) => {
   try {
     const response = await axiosInstance.get(`${ownerHost}/detail/${id}`);
+    console.log(response);
     return {
       owner: response.data.owner,
       rooms: response.data.rooms,
