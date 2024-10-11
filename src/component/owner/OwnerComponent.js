@@ -7,7 +7,7 @@ const OwnerComponent = () => {
   const [ownerInfo, setOwnerInfo] = useState({
     ownerEmail: "",
     ownerNum: "",
-  
+    location:"",
   });
 
   const [singroom, setSingroom] = useState({
@@ -26,11 +26,15 @@ const OwnerComponent = () => {
   const fetchOwnerInfo = async () => {
     try {
       const data = await getOwnerInfo();
+
+      // 점주 정보 상태 업데이트
       setOwnerInfo({
         ownerEmail: data.ownerEmail,
         ownerNum: data.ownerNum,
-        // signUpDate: data.signUpDate,
+        location: data.location,
       });
+
+      // 노래방 정보 상태 업데이트
       setSingroom({
         name: data.singroom?.name || "",
         price: data.singroom?.price || "",
@@ -61,23 +65,27 @@ const OwnerComponent = () => {
     }
   };
 
-  // OwnerComponent.js에서 수정
-const handleChangePassword = async () => {
-  if (!currentPassword || !newPassword) {
-    alert("모든 필드를 입력해 주세요.");
-    return;
-  }
-
-  try {
-    const ownerEmail = ownerInfo.ownerEmail; // ownerEmail 가져오기
-    await changeOwnerPassword(ownerEmail, { currentPassword, newPassword });
-    alert("비밀번호가 성공적으로 변경되었습니다.");
-    setPasswordChangeMode(false);
-  } catch (error) {
-    alert("비밀번호 변경에 실패했습니다. 현재 비밀번호를 확인해 주세요.");
-    console.error("비밀번호 변경 중 오류가 발생했습니다:", error);
-  }
-};
+  const handleChangePassword = async () => {
+    if (!currentPassword || !newPassword) {
+      alert("모든 필드를 입력해 주세요.");
+      return;
+    }
+  
+    try {
+      const changePasswordData = {
+        ownerEmail: ownerInfo.ownerEmail, // 이메일
+        ownerPassword: currentPassword,   // 현재 비밀번호
+        newPassword: newPassword          // 새 비밀번호
+      };
+  
+      await changeOwnerPassword(changePasswordData);
+      alert("비밀번호가 성공적으로 변경되었습니다.");
+      setPasswordChangeMode(false);
+    } catch (error) {
+      alert("비밀번호 변경에 실패했습니다. 현재 비밀번호를 확인해 주세요.");
+      console.error("비밀번호 변경 중 오류가 발생했습니다:", error);
+    }
+  };
 
   return (
     <div className="container mx-auto mt-10 p-6 space-y-6 max-w-lg">
@@ -86,6 +94,7 @@ const handleChangePassword = async () => {
         <h2 className="text-2xl font-bold text-cyan-600 mb-4 text-center">점주 정보</h2>
         <p className="text-gray-700 mb-2"><strong>사업자 번호:</strong> {ownerInfo.ownerNum}</p>
         <p className="text-gray-700 mb-2"><strong>아이디:</strong> {ownerInfo.ownerEmail}</p>
+        <p className="text-gray-700 mb-2"><strong>점포 위치:</strong> {ownerInfo.location}</p>
         {/* <p className="text-gray-700 mb-4"><strong>회원가입 날짜:</strong> {ownerInfo.signUpDate}</p> */}
         <button
           onClick={togglePasswordChangeMode}

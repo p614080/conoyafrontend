@@ -16,7 +16,7 @@ export const joinOwner = async (ownerData) => {
       storeName: ownerData.storeName,
       location: ownerData.location,
     };
-    const response = await axiosInstance.post(`${ownerHost}/join2`, joinDTO);
+    const response = await axiosInstance.post(`${ownerHost}/join`, joinDTO);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || "회원가입 실패");
@@ -66,11 +66,16 @@ export const getOwnerInfo = async () => {
   }
 };
 
-// 비밀번호 변경
 export const changeOwnerPassword = async (changePasswordData) => {
   try {
-  const { ownerEmail, ...passwordData } = changePasswordData;
-const response = await axiosInstance.put(`${ownerHost}/change-password?ownerEmail=${ownerEmail}`, passwordData);
+    const { ownerEmail, ...passwordData } = changePasswordData;
+
+    // ownerEmail을 쿼리 파라미터로 추가
+    const response = await axiosInstance.put(
+      `${ownerHost}/change-password?ownerEmail=${ownerEmail}`,
+      passwordData
+    );
+    
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || "비밀번호 변경 실패");
@@ -106,6 +111,7 @@ export const fetchOwnerInfo = async () => {
     return {
       ownerEmail: data.ownerEmail,
       ownerNum: data.ownerNum,
+      location: data.location,
       singroom: {
         name: data.singroom?.name,
         price: data.singroom?.price,
