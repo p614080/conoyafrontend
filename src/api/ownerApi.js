@@ -7,16 +7,16 @@ const ownerHost = `${API_SERVER_HOST}/owners`;
 // 점주 회원가입
 export const joinOwner = async (ownerData) => {
   try {
-    const joinDTO = {
+    const ownerDTO = {
       ownerEmail: ownerData.ownerEmail,
       ownerPassword: ownerData.ownerPassword,
-      ownerPasswordCheck: ownerData.ownerPasswordCheck,
+      newPassword : ownerData.ownerPasswordCheck,
       ownerNum: ownerData.ownerNum,
       userNickname: ownerData.userNickname,
       storeName: ownerData.storeName,
       location: ownerData.location,
     };
-    const response = await axiosInstance.post(`${ownerHost}/join`, joinDTO);
+    const response = await axiosInstance.post(`${ownerHost}/join`, ownerDTO);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || "회원가입 실패");

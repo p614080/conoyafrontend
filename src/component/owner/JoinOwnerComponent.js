@@ -47,11 +47,7 @@ const JoinOwnerComponent = () => {
     try {
       alert("기업회원으로 가입합니다.");
       await joinOwner({ ...joinData }); // 기업회원 가입 API 호출
-
-      // 회원가입 후 회원 정보를 다시 가져오기
-      const ownerData = await fetchOwnerInfo(); // fetchOwnerInfo 호출
-      console.log("회원 정보:", ownerData);
-
+      alert("회원가입 되었습니다.");
       // 페이지 이동
       navigate("/"); // 필요한 라우트로 이동
     } catch (error) {
